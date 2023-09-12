@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .drag {
+    width: 100px;
+    height: 100px;
+  }
+  </style>
+  <title>Drag and Drop Example</title>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <img src="Rcb.jpg" alt="Image 1" style="width: 200px; height: 200px " class="drag">
+      <img src="conor gloves.jpg" alt="Image 1" style="width: 200px; height: 200px " class="drag">
+    </div>
+    <div class="box" ></div>
+  </div>
+  <script>
+  const drag = document.querySelectorAll('.drag');
+  const boxing = document.querySelectorAll('.box');
+
+  drag.forEach(drag =>{
+    drag.addEventListener('dragstart',()=>{
+      drag.classList.add('dragging');
+
+    })
+    drag.addEventListener('.dragend',()=>{
+      drag.classList.remove('dragging');
+    })
+    boxing.forEach(box =>{
+      box.addEventListener('dragover',e=> {
+        e.preventDefault();
+
+      });
+      box.addEventListener('drop', e=>{
+        e.preventDefault();
+        const drag = document.querySelector('.dragging');
+        box.appendChild(drag)
+      })
+    })
+    
+    
+  })
+  </script>
+</body>
+</html>
